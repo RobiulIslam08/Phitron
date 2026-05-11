@@ -14,19 +14,23 @@ int main()
             scanf("%d", &a[i][j]);
         }
     }
-    // int specific_row;
-    // scanf("%d", &specific_row);
-    // for (int i = 0; i < c; i++)
-    // {
-    //     printf("%d ", a[specific_row][i]);
-    // }
 
-    int specific_col;
-    scanf("%d", &specific_col);
+    int total_val = r *c;
+    int zero = 0;
     for (int i = 0; i < r; i++)
     {
-        printf("%d ", a[i][specific_col]);
-        printf("\n");
+        for (int j = 0; j < c; j++)
+        {
+          if(a[i][j] == 0){
+            zero++;
+          }
+        }
+    }
+
+    if(total_val == zero ){
+        printf("this is zero metrix");
+    }else{
+           printf("this is not zero metrix");
     }
 
     return 0;

@@ -1,1 +1,1 @@
-40 5000 60 
+this is zero metrix
