@@ -1,3 +1,1 @@
-sakib khan 1 90
-rakib khan raju 2 80
-nakib khan 3 60
+nakib 3 60
