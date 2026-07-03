@@ -24,7 +24,7 @@ void insert_at_tail(Node *&head, Node *&tail, int val)
     }
 
     tail->next = newNode;
-   tail = newNode;
+    tail = newNode;
 }
 
 void print_linked_list(Node *head)
@@ -39,18 +39,21 @@ void print_linked_list(Node *head)
     }
 }
 
-void delete_at_tail(Node *head, Node* &tail, int idx)
+void sort_linked_list(Node *head)
 {
-  Node *temp = head;
-  for(int i = 1; i<idx; i++) {
-    temp = temp->next;
-  }
-  Node *deleteNode = temp->next;
-  temp->next = temp->next->next;
 
-  delete deleteNode;
-  tail = temp;
+    for (Node *i = head; i->next != NULL; i = i->next)
+    {
+        for (Node *j = i->next; j != NULL; j = j->next)
+        {
+            if(i->val > j->val)
+            {
+                swap(i->val, j->val);
+            }
+        }
+    }
 }
+
 int main()
 {
     Node *head = NULL;
@@ -61,20 +64,16 @@ int main()
     {
         cin >> val;
 
-        if(val == -1){
+        if (val == -1)
+        {
             break;
         }
 
         insert_at_tail(head, tail, val);
     }
 
- cout << "tail before delte => " << tail->val << endl;
-
-    delete_at_tail(head,tail, 3);
+    sort_linked_list(head);
     print_linked_list(head);
-
-    cout << "tail after delete => " << tail->val << endl;
-    
 
     return 0;
 }
