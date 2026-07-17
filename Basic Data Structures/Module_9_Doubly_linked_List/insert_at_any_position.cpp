@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 class Node
 {
@@ -14,31 +14,34 @@ public:
     }
 };
 
-void print_forward (Node *head) {
+void print_forward(Node *head)
+{
     Node *temp = head;
-    
+
     while (temp != NULL)
     {
         /* code */
-        cout << temp->val << ' ' ;
+        cout << temp->val << ' ';
         temp = temp->next;
     }
     cout << endl;
+}
+void insert_at_any_pos(Node *&head, int idx, int val)
+{
+    Node *newnode = new Node(val);
+    Node *temp = head;
+
+   for(int i = 1; i<idx; i++)
+   {
+        temp = temp->next;
+   }
+   newnode->next = temp->next;
+   temp->next->prev = newnode;
+
+   temp->next = newnode;
+   newnode->prev = temp;
 
     
-}
-
-void insert_at_head (Node *&head, Node* &tail,int val){
-    Node *newnode = new Node(val);
-      if(head == NULL){
-        head = newnode;
-        tail = newnode;
-        return;
-    }
-    newnode->next = head;
-    head->prev = newnode;
-    head = newnode;
-
 }
 int main()
 {
@@ -47,13 +50,12 @@ int main()
     Node *tail = new Node(40);
 
     head->next = a;
-    a->prev =head;
+    a->prev = head;
 
     a->next = tail;
     tail->prev = a;
 
-    insert_at_head(head, tail, 100);
-
+    insert_at_any_pos(head, 2, 100);
     print_forward(head);
     return 0;
 }
